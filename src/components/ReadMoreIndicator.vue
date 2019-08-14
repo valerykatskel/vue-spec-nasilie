@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: 'ReadmoreIndicator',
+  name: 'ReadMoreIndicator',
   props: {
     title: String
   },
