@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss">
 .readmore {
-  position: absolute;
+  position: fixed;
   text-align: center;
   bottom: 0;
   left: 50%;
