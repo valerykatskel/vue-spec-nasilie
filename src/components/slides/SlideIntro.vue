@@ -71,13 +71,11 @@ export default {
 </script>
 
 <style lang="scss">
-  
-.app-section--intro__spacer-after-header {
-  height: 55vh;
-}
-
 .app-section {
   &.app-section--intro {
+    &__spacer-after-header {
+      height: 55vh;
+    }
     opacity: 1;
 
     .content-background {
