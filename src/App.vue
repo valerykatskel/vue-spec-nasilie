@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    
-    <read-more-indicator title="Читать далее"/>
+    <read-more-indicator 
+      title="Читать далее"
+      topText="Наверх"
+      :revert="true"
+      :isBottomOfPage="isBottomOfPage"
+    />
 
     <div class="scroll-container"> 
       <!-- intro slide start -->
@@ -10,12 +14,12 @@
           <img src="./assets/images/slide-intro/background.jpg" alt="Истории людей, которые заявили о насилии со стороны милиции"/>
         </div>
 
-        <div class="container" id="slideContentIntro">
-          <header class="container-header"> 
-            <h2 class="section-title">Сопротивление бесполезно</h2>
-            <div class="section-description">Истории людей, которые заявили о насилии со стороны милиции</div>
-          </header>
+        <header class="slide-header"> 
+          <h2 class="slide-header--title">Сопротивление бесполезно</h2>
+          <div class="slide-header--description">Истории людей, которые заявили о насилии со стороны милиции</div>
+        </header>
 
+        <div class="container" id="slideContentIntro">
           <div class="container-i-text">
             <p>«Мы — защита граждан, а не карающий меч революции, как это раньше об органах ВЧК-НКВД говорили,» — слова нового министра внутренних дел Юрия Караева. Истории белорусов, которые заявили о насилии со стороны милиции и о которых рассказывает в своем фотопроекте Максим Сарычев, произошли более года назад. Во всех случаях герои пытаются доказать, что в отношении них были превышены служебные полномочия. Пока безрезультатно.</p>
             <p>Светлана встречала Новый год с друзьями и даже не предполагала, что ее задержит ОМОН. Домой она вернулась с сотрясением мозга. Сергей утверждает, как правоохранители вывезли его в лес, требуя, чтобы он выдал информацию о своих друзьях. Для Бориса ссора с женой закончилась вызовом милиции и применением газового баллончика. Татьяну заставили сдать отпечатки пальцев, удерживали силой, чтобы сфотографировать для базы правонарушителей.</p>
@@ -34,12 +38,12 @@
           <img src="./assets/images/slide-01/background.jpg" alt="Светлана Соколовская, 34 года, актриса, Минск">
         </div>
 
-        <div class="container" id="slideContent01">
-          <header class="container-header"> 
-            <h2 class="section-title">Светлана Соколовская</h2>
-            <div class="section-description">34 года, актриса, Минск</div>
-          </header>
+        <header class="slide-header"> 
+          <h2 class="slide-header--title">Светлана Соколовская</h2>
+          <div class="slide-header--description">34 года, актриса, Минск</div>
+        </header>
 
+        <div class="container" id="slideContent01">
           <div class="container-i-text">
             <p>Светлана Соколовская 1 января 2018 года, в новогоднюю ночь, пошла с друзьями на праздничную елку. Сотрудники ОМОН не пустили компанию за огражденную территорию, возник спор, в результате чего молодых людей задержали.</p>
             <p>В интервью TUT.BY девушка рассказала, что когда сотрудник ОМОН закрывал дверь, то ударил ее, и она ушибла палец. Потом, по ее словам, последовал удар по голове, и она потеряла сознание. Позже врачи в документах укажут «закрытая черепно-мозговая травма легкой степени, сотрясение головного мозга, ушиб третьего пальца левой руки».</p>
@@ -67,12 +71,12 @@
           <img src="./assets/images/slide-02/background.jpg" alt="Сергей Созонович, 23 года, музыкант, Столин">
         </div>
 
-        <div class="container" id="slideContent02">
-          <header class="container-header"> 
-            <h2 class="section-title">Сергей Созонович</h2>
-            <div class="section-description">23 года, музыкант, Столин</div>
-          </header>
+        <header class="slide-header"> 
+          <h2 class="slide-header--title">Сергей Созонович</h2>
+          <div class="slide-header--description">23 года, музыкант, Столин</div>
+        </header>
 
+        <div class="container" id="slideContent02">
           <div class="container-i-text">
             <p>У Сергея было несколько правонарушений, в том числе за граффити с надписью, направленной против милиции. В один день милиционеры приехали к его на работу отцу, вместе нашли Сергея.</p>
             <p>Парень говорит, что милиционеры три часа пытались выведать у него информацию о друзьях и знакомых из музыкальной среды, угрожали физической расправой, смотрели фото на его телефоне. После этого, как утверждает Сергей, правоохранители вывезли его в лес и приставили к спине пистолет.</p>
@@ -98,12 +102,12 @@
           <img src="./assets/images/slide-03/background.jpg" alt="Борис Змитрович, 30 лет, водитель, Сморгонь">
         </div>
 
-        <div class="container" id="slideContent03">
-          <header class="container-header"> 
-            <h2 class="section-title">Борис Змитрович</h2>
-            <div class="section-description">30 лет, водитель, Сморгонь</div>
-          </header>
+        <header class="slide-header"> 
+          <h2 class="slide-header--title">Борис Змитрович</h2>
+          <div class="slide-header--description">30 лет, водитель, Сморгонь</div>
+        </header>
 
+        <div class="container" id="slideContent03">
           <div class="container-i-text">
             <p>Что произошло? Борис рассказывает, что милиция задержала его ночью 14 января 2018 года, когда он возвращался с юбилея отца. Во время празднования он выпил около 300 граммов водки. На выходе из ресторана поссорился с женой, и она вызвала милицию. Борис отказался ехать в отделение. Во время задержания сотрудники использовали слезоточивый газ, повалили его на землю и избили ногами. В отделении, вспоминает мужчина, ему разбили нос. Судебно-медицинская экспертиза зафиксировала химические ожоги лица и глаз, многочисленные телесные повреждения и гематому в районе носа (в редакции есть копия заключения).</p>
             <p>Борис подавал жалобы в СК, прокуратуру и Управление собственной безопасности МВД — повсюду получил отказ. Сейчас он в четвертый раз обжалует отказ Следственного комитета на возбуждение уголовного дела.</p>
@@ -130,12 +134,12 @@
           <img src="./assets/images/slide-04/background.jpg" alt="Татьяна Самникова-Мастыкина, 32 года, волонтерка правозащитной организации, Минск">
         </div>
 
-        <div class="container" id="slideContent04">
-          <header class="container-header"> 
-            <h2 class="section-title">Татьяна Самникова-Мастыкина</h2>
-            <div class="section-description">32 года, волонтерка правозащитной организации, Минск</div>
-          </header>
+        <header class="slide-header"> 
+          <h2 class="slide-header--title">Татьяна Самникова-Мастыкина</h2>
+          <div class="slide-header--description">32 года, волонтерка правозащитной организации, Минск</div>
+        </header>
 
+        <div class="container" id="slideContent04">
           <div class="container-i-text">
             <p>атьяна Самникова-Мастыкина вспоминает, как на День Воли в 2018-м ее и других волонтеров Белорусского Хельсинкского комитета задержали в центре Минска для проверки документов. Дальше повезли в РУВД, где во внутреннем дворике Таня и ее коллеги провели три часа, стоя лицом к стене. В отделении ее заставили пройти дактилоскопию, а потом удерживали силой, чтобы сфотографировать для базы правонарушителей.</p>
             <p>Из пояснений правоохранителей: Мастыкина отказывалась добровольно сдать отпечатки пальцев и сфотографироваться, ее предупреждали, что к ней могут применить силу, однако и после этого она сопротивлялась. В итоге один сотрудник «взял руку Мастыкиной и стал разгибать собранные в кулак пальцы рук, в это время она сопротивлялась, вырывалась» . Одновременно другой сотрудник «присел на корточки, обхватил ее ноги руками и стал удерживать» . Милиционеры держали ее руки, по очереди разгибали пальцы. При фотосъемке удерживали ее голову, чтобы сделать снимок лица.</p>
@@ -225,8 +229,31 @@ import ReadMoreIndicator from './components/ReadMoreIndicator.vue'
 
 export default {
   name: 'app',
+
   components: {
     ReadMoreIndicator
+  },
+
+  data () {
+    return {
+      wnd: {
+        width: 0,
+        height: 0
+      },
+      positionTop: 0,
+      documentH: 0,
+      isBottomOfPage: false,
+    }
+  },
+
+  created() {
+    window.addEventListener('resize', this.handleResize)
+    window.addEventListener('scroll', this.handleScroll)
+    this.handleResize();
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('scroll', this.handleScroll)
   },
   mounted () {
     // инициализируем контролллер ScrollMagic
@@ -234,7 +261,7 @@ export default {
     // // создаем новый таймлайн для анимаций (новую анимацию)
     // var tl = new TimelineLite();
     // tl
-    //   //.to('.container-header', 3, {y: -850, opacity: 0.0})                          // анимируем заголовок титульного слайда
+    //   //.to('.slide-header', 3, {y: -850, opacity: 0.0})                          // анимируем заголовок титульного слайда
     //   //.add("end", 3)                                                // добавляем контрольную точку на 3 секунды
     //   .to('.slide-background img', 3, {opacity: 0.0,})         // анимируем фон титульного слайда   
     
@@ -252,161 +279,23 @@ export default {
     //     name: 'firstSlide'
     //   }) // add indicators (requires plugin)
     //   .addTo(controller);
+  },
+
+  methods: {
+    handleResize() {
+      this.wnd.width = window.innerWidth;
+      this.wnd.height = window.innerHeight;
+    },
+    handleScroll: function(e) {
+      this.positionTop = e.target.scrollingElement.scrollTop;
+      this.documentH = e.target.scrollingElement.offsetHeight;
+      this.isBottomOfPage = this.documentH === this.positionTop + this.wnd.height? true : false
+    },
   }
 }
 </script>
 
 <style lang="scss">
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Helvetica, sans-serif;
-  background: black;
-  color: #fff;
-}
-
-// layout start
-.container {
-  width: 700px;
-  margin: 0 auto;
-  box-sizing: border-box;
-
-  .container-i-text {
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 55px;
-    width: 100%;
-    box-sizing: border-box;
-    padding-bottom: 55px;
-    
-    p {
-      color: #fff;
-      font-size: 17px;
-      line-height: 25px;
-      margin: 0;
-    }
-
-    h3 {
-      margin: 0;
-      font-size: 17px;
-      line-height: 25px;
-    }
-
-    figure {
-      margin: 50px -50px 0;
-    }
-  }
-}
-// layout end
-
-.spacerBetweenSlides {
-  height: 200vh;
-}
-
-.spacer50 {
-  height: 50vh;
-}
-
-.slide {
-  position: relative;
-  width: 100%;
-
-  .slide-background {
-    position: relative;
-    max-width: 100vw;
-
-    img {
-      width: 100%;
-      object-fit: cover;
-    }
-  }
-  
-  .container-header {
-    text-align: center;
-
-    .section-title {
-      margin: 0;
-      font-size: 50px;
-      line-height: 52px;
-      color: #fff;
-      font-weight: bold;
-    }
-
-    .section-description {
-      font-size: 19px;
-      line-height: 30px;
-    }
-  }
-  
-  .container-i-text {
-    p {
-      font-size: 17px;
-      line-height: 25px;
-      margin-top: 25px;
-      margin-bottom: 0;
-
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-  }
-
-  .container-footer {
-    .container-i-text {
-      background: rgba(66, 17, 23, 0.7);
-    }
-  }
-  
-  .b-footnote {
-    margin-top: 55px;
-
-    p {
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 13px;
-      line-height: 18px;
-    }
-  }
-
-  &.slide {
-    &--intro,
-    &--outro {
-      .container-i-text {
-        background: rgba(255, 255, 255, 0.05);
-      }
-    }
-  }
-
-  &.slide--intro {
-    &__spacer-after-header {
-      height: 55vh;
-    }
-    
-    .section-title {
-      font-size: 35px;
-      line-height: 40px;
-    }
-
-    .slide-background {
-      position: relative;
-    }
-  }
-
-  &.slide--outro {
-    .container-footer {
-      .container-i-text {
-        background: none;
-        
-        h3 {
-          margin-bottom: 30px;
-        }
-        
-        p {
-          margin: 0;
-        }
-      }
-    }
-  }  
-}
 
 .app-footer {
   color: rgba(255, 255, 255, 0.5);
@@ -456,19 +345,19 @@ body {
           }
 
           &[data-link="#share-facebook"] {
-            background-image: url('./assets/images/icons/icon-fb.png');
+            background-image: url("./assets/images/icons/icon-fb.png");
           }
 
           &[data-link="#share-vk"] {
-            background-image: url('./assets/images/icons/icon-vk.png');
+            background-image: url("./assets/images/icons/icon-vk.png");
           }
 
           &[data-link="#share-twitter"] {
-            background-image: url('./assets/images/icons/icon-fb.png');
+            background-image: url("./assets/images/icons/icon-fb.png");
           }
 
           &[data-link="#share-odnoklassniki"] {
-            background-image: url('./assets/images/icons/icon-ok.png');
+            background-image: url("./assets/images/icons/icon-ok.png");
           }
 
         }
