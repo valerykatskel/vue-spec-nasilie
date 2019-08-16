@@ -22,38 +22,14 @@
       />
     </div>
 
-    <footer class="app-footer">
-      <div class="container">
-        <div class="container-i-text">
-          <div class="footer-copyright">
-            <p>© ООО «ТУТ БАЙ МЕДИА», 2000 — 2019</p>
-          </div>
-          <div class="footer-social">
-            <social-sharing 
-              url="https://tut.by/"
-              title="Сопротивление бесполезно"
-              description="Истории людей, которые заявили о насилии со стороны милиции"
-              quote="Истории белорусов, которые заявили о насилии со стороны милиции и о которых рассказывает в своем фотопроекте Максим Сарычев, произошли более года назад"
-              hashtags="tutby,tut.by,Спецпроект TUT.BY"
-              twitter-user="tutby"
-              inline-template>
-              <div>
-                <network network="facebook"></network>
-                <network network="vk"></network>
-                <network network="twitter"></network>
-                <network network="odnoklassniki"></network>
-              </div>
-            </social-sharing>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <app-footer />
   </div>
 </template>
 
 <script>
 import ReadMoreIndicator from './components/ReadMoreIndicator.vue'
 import Slide from './components/Slide.vue'
+import AppFooter from './components/AppFooter.vue'
 
 // 1. Создаем контроллер для области прокрутки, области, в которой будут анимироваться наши слайды.
 const controller = new ScrollMagic.Controller({
@@ -67,7 +43,8 @@ export default {
 
   components: {
     ReadMoreIndicator,
-    Slide
+    Slide,
+    AppFooter,
   },
 
   data () {
