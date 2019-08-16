@@ -255,8 +255,6 @@ export default {
       var tl = new TimelineMax({onComplete: this.tlIntroCompleted})
         .to('#intro .slide-background', 2.5, {opacity: 0.0, ease:new SlowMo(0.2, 0.8) })                          // анимируем заголовок титульного слайда
  
-
-
       // 2. Создаем сцену для главного
       let slideIntoSelector = `#intro`
       let slideDuration = this.$refs['intro'][0].$el.clientHeight
@@ -265,21 +263,38 @@ export default {
         triggerElement: slideIntoSelector,
         duration: slideDuration
       })
-        //.setPin(slideIntoSelector)
         .setClassToggle(slideIntoSelector, "visited")
-        // .on('enter leave', function(event) {
-        //   console.log('.....')
-        // })
-        // .on('end', function(event) {
-        //   console.log('on END first slide')
-        // })
-        // .on('start', function(event) {
-        //   console.log('on START first slide')
-        // })
         .setTween(tl)
-        .addIndicators()
+        //.addIndicators()
         .addTo(this.controller)
+
       
+      this.slides.forEach((element, index) => {
+        if (element.id === 'intro') return
+        console.log(index)
+
+        // создаем новый таймлайн для анимации для каждого слайда
+        const slideTween = new TimelineMax()
+          .to(`#${element.id} .slide-background`, 1, {opacity: 1.0, ease:new SlowMo(0.2, 0.8) },'-=0.5')
+          .to(`#${element.id} .slide-background`, 1.5, {opacity: 0.0, scale: 1.2 }, '+=0.5')
+  
+        // 3. Создаем сцену для контентного слайда
+        let slideSelector = `#${element.id}`
+        let slideDuration = this.$refs[element.id][0].$el.clientHeight
+        
+        this.scenes[element.id] = new ScrollMagic.Scene({
+          triggerElement: slideSelector,
+          duration: slideDuration
+        })
+          .setClassToggle(slideSelector, "visited")
+          .setTween(slideTween)
+          //.addIndicators()
+          .addTo(this.controller)
+
+
+      })
+
+
     },
 
     navigateScene (event) {
@@ -333,19 +348,6 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  position: relative;
-  &:before {
-    position: fixed;
-    content: '';
-    width: 30px;
-    display: block;
-    height: 3px;
-    top: 40vh;
-    background: green;
-    right: 0px;
-  }
-}
 .app-footer {
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 65px;
