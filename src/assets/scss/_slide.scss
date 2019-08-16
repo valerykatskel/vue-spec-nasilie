@@ -2,7 +2,7 @@
   width: 100%;
   margin-top: 100vh;
   padding-bottom: 100vh;
-  margin-top: -40vh;
+  margin-top: -80vh;
   padding-top: 290vh;
 
   &.visited {
@@ -99,6 +99,7 @@
   }
 
   &#outro {
+    padding-bottom: 0;
     .container-footer {
       .container-i-text {
         background: none;

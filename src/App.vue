@@ -253,7 +253,7 @@ export default {
       })
       // создаем новый таймлайн для анимаций (новую анимацию)
       var tl = new TimelineMax({onComplete: this.tlIntroCompleted})
-        .to('#intro .slide-background', 2.5, {opacity: 0.0, ease:new SlowMo(0.2, 0.8) })                          // анимируем заголовок титульного слайда
+        .to('#intro .slide-background', 2.5, {opacity: 0.0, ease:new SlowMo(0.2, 0.6) })                          // анимируем заголовок титульного слайда
  
       // 2. Создаем сцену для главного
       let slideIntoSelector = `#intro`
@@ -275,8 +275,8 @@ export default {
 
         // создаем новый таймлайн для анимации для каждого слайда
         const slideTween = new TimelineMax()
-          .to(`#${element.id} .slide-background`, 1, {opacity: 1.0, ease:new SlowMo(0.2, 0.8) },'-=0.5')
-          .to(`#${element.id} .slide-background`, 1.5, {opacity: 0.0, scale: 1.2 }, '+=0.5')
+          .to(`#${element.id} .slide-background`, 3, {opacity: 1.0, ease:new SlowMo(0.2, 0.8) },'-=1.0')
+          .to(`#${element.id} .slide-background`, 3, {opacity: 0.0, scale: 1.2, ease:new SlowMo(0.3, 0.8)})
   
         // 3. Создаем сцену для контентного слайда
         let slideSelector = `#${element.id}`
@@ -289,6 +289,10 @@ export default {
           .setClassToggle(slideSelector, "visited")
           .setTween(slideTween)
           //.addIndicators()
+          .on('end', function(event){
+            this.$refs[element.id][0]
+            console.log(`закончилась секция ${element.id}`)
+          })
           .addTo(this.controller)
 
 
