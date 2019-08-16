@@ -1,10 +1,29 @@
 .slide {
-  position: relative;
   width: 100%;
+  margin-top: 100vh;
+  padding-bottom: 100vh;
+  border-bottom: 1px solid;
+  border-top: 1px solid red;
+  margin-top: -40vh;
+  padding-top: 150vh;
+
+  &.visited {
+    .slide-background {
+      z-index: -1;
+      height: 100vh;
+    }
+  }
 
   .slide-background {
-    position: relative;
-    max-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    z-index: -2;
+    opacity: 0;
 
     img {
       width: 100%;
@@ -66,10 +85,18 @@
   }
 
   &#intro {
+    margin-top: 40vh;
+    padding-top: 0;
     .slide-header--title {
       font-size: 70px;
       line-height: 82px;
       margin-bottom: 30px;
+    }
+    .container {
+      margin-top: 60vh;
+    }
+    .slide-background {
+      opacity: 1;
     }
   }
 

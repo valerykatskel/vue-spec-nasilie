@@ -3,9 +3,7 @@
     
     <a :name="this.id"/>
     
-    <div class="slide-background">
-      <img :src="this.background" :alt="this.addAltForBackground"/>
-    </div>
+    <div class="slide-background" :style="this.addBackgroundInline"></div>
     
     <header v-if="this.showSlideHeader" class="slide-header"> 
       <h2 class="slide-header--title">{{this.title}}</h2>
@@ -13,8 +11,9 @@
     </header>
 
     <div class="container" :id='this.getUniqIdForContainer'>
-      <div class="container-i-text" v-html="this.html">
-        <figure v-if="this.contentImage">
+      <div class="container-i-text">
+        <div v-html="this.html"></div>
+        <figure v-if="this.showContentImage">
           <img :src="this.contentImage.url" :alt="this.contentImage.caption">
           <figcaption>{{this.contentImage.caption}}</figcaption>
         </figure>
@@ -67,6 +66,15 @@ export default {
 
     showFooter () {
       return this.footer !== ''
+    },
+
+    addBackgroundInline () {
+      return `background-image: url(${this.background})`
+    },
+
+    showContentImage () {
+      const res = this.contentImage !== undefined? true : false 
+      return res
     }
   }
 }

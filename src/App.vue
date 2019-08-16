@@ -7,9 +7,10 @@
       :isBottomOfPage="isBottomOfPage"
     />
 
-    <div class="scroll-container">
+    <div class="scroll-container" ref="scrollContainer">
       <slide
         v-for="slide in slides"
+        :ref="slide.id"
         :key="slide.id"
         :id="slide.id"
         :background="slide.background"
@@ -54,6 +55,13 @@
 import ReadMoreIndicator from './components/ReadMoreIndicator.vue'
 import Slide from './components/Slide.vue'
 
+// 1. Создаем контроллер для области прокрутки, области, в которой будут анимироваться наши слайды.
+const controller = new ScrollMagic.Controller({
+  globalSceneOptions: {
+    triggerHook: 0,
+    offset: 0 // needed to get a correct 'leave' event on the first slide
+  }
+})
 export default {
   name: 'app', 
 
@@ -64,6 +72,8 @@ export default {
 
   data () {
     return {
+      scrollContainer: null,
+      scenes: {},
       wnd: {
         width: 0,
         height: 0
@@ -243,30 +253,7 @@ export default {
   },
 
   mounted () {
-    //this.getAllAncors()
-    // инициализируем контролллер ScrollMagic
-    // var controller = new ScrollMagic.Controller();
-    // // создаем новый таймлайн для анимаций (новую анимацию)
-    // var tl = new TimelineLite();
-    // tl
-    //   //.to('.slide-header', 3, {y: -850, opacity: 0.0})                          // анимируем заголовок титульного слайда
-    //   //.add("end", 3)                                                // добавляем контрольную точку на 3 секунды
-    //   .to('.slide-background img', 3, {opacity: 0.0,})         // анимируем фон титульного слайда   
-    
-    
-    // // создадим сцену для анимации первого слайда
-    // new ScrollMagic.Scene({
-    //   duration: "270%",                                             // задаем длительность сцены в процентах, 100% это одна высота вьюпорта (экрана)
-    //   offset: "200",                                                    // смещение срабатывания триггера
-    //   triggerElement: "#sectionContentIntro",                                       // селектор элемента-триггера
-    //   triggerHook: "0",                                       // каким образом будет срабатывать триггер
-    // })
-    //   //.setPin("#sectionContentIntro")                                               
-    //   .setTween(tl)
-    //   .addIndicators({
-    //     name: 'firstSlide'
-    //   }) // add indicators (requires plugin)
-    //   .addTo(controller);
+    //this.initScrollControls()
   },
 
   methods: {
@@ -274,17 +261,111 @@ export default {
       this.wnd.width = window.innerWidth;
       this.wnd.height = window.innerHeight;
     },
+
     handleScroll: function(e) {
       this.positionTop = e.target.scrollingElement.scrollTop;
       this.documentH = e.target.scrollingElement.offsetHeight;
       this.isBottomOfPage = this.documentH === this.positionTop + this.wnd.height? true : false
     },
+
+    initScrollControls () {
+            
+      // создаем новый таймлайн для анимаций (новую анимацию)
+      var tl = new TimelineLite()
+        .to('#intro .slide-background', 3, {opacity: 0.5})                          // анимируем заголовок титульного слайда
+ 
+
+
+      // 2. Создаем сцену для главного
+      let slideIntoSelector = `#intro`
+      this.scenes['intro'] = new ScrollMagic.Scene({
+        triggerElement: slideIntoSelector,
+        duration: 200
+      })
+        .setPin(slideIntoSelector)
+        .update()
+        .setClassToggle(slideIntoSelector, "visited")
+        // .on('enter leave', function(event) {
+        //   console.log('.....')
+        // })
+        // .on('end', function(event) {
+        //   console.log('on END first slide')
+        // })
+        // .on('start', function(event) {
+        //   console.log('on START first slide')
+        // })
+        //.setTween(tl)
+        .addIndicators({
+          name: 'firstSlide'
+        })
+        .addTo(controller)
+      
+    },
+
+    navigateScene (event) {
+      const slide = event.target.getPin()
+    },
+
+    getScrollHeight (num) {
+      //var stepCount = slide.find('.step').size() + 1;
+
+      return $(window).innerHeight() * num;
+    },
+
+    // addIntroSlideAnimations() {
+    //   const delay = 0.7
+    //   const slide = this.$refs.intro
+    //   const tween = new TimelineMax();      // создаем анимацию
+    //   const scene = new ScrollScene({
+    //     triggerElement: slide,
+    //     duration: 0//getScrollHeight(slide)
+    //   });
+
+    //   // slide animation steps
+    //   addStepAnimations(slide, tween);
+
+    //   // add delay at the end
+    //   tween.add(TweenMax.from(
+    //     slide.find('defs').first(),
+    //     delay, {}
+    //   ));
+
+    //   // debugEvents(scene);
+
+    //   scene
+    //     .setTween(tween)
+    //     .setPin(slide)
+    //     .on('enter leave', navigateScene)
+    //     .on('end', function(event){
+    //       slide.addClass('stayWhereYouAre');
+    //     })
+    //     .on('start', function(event){
+    //       slides.removeClass('stayWhereYouAre');
+    //     })
+    //     .addTo(controller);
+
+    //   // debug scene
+    //   // scene.addIndicators();
+    //   return scene;
+    // }
   }
 }
 </script>
 
 <style lang="scss">
-
+#app {
+  position: relative;
+  &:before {
+    position: fixed;
+    content: '';
+    width: 30px;
+    display: block;
+    height: 3px;
+    top: 40vh;
+    background: green;
+    right: 0px;
+  }
+}
 .app-footer {
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 65px;
