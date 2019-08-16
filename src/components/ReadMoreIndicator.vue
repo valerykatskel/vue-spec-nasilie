@@ -35,7 +35,6 @@ export default {
   methods: {
     clickMoveTop () {
       if (!this.isBottomOfPage || !this.revert) return
-      console.log('moving to top!!!')
       window.scroll({
         top: 0,
         left: 0,
