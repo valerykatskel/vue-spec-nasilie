@@ -31,13 +31,6 @@ import ReadMoreIndicator from './components/ReadMoreIndicator.vue'
 import Slide from './components/Slide.vue'
 import AppFooter from './components/AppFooter.vue'
 
-// 1. Создаем контроллер для области прокрутки, области, в которой будут анимироваться наши слайды.
-const controller = new ScrollMagic.Controller({
-  globalSceneOptions: {
-    triggerHook: 0,
-    offset: 0 // needed to get a correct 'leave' event on the first slide
-  }
-})
 export default {
   name: 'app', 
 
@@ -50,6 +43,7 @@ export default {
   data () {
     return {
       scrollContainer: null,
+      controller: null,
       scenes: {},
       wnd: {
         width: 0,
@@ -230,7 +224,7 @@ export default {
   },
 
   mounted () {
-    //this.initScrollControls()
+    this.initScrollControls()
   },
 
   methods: {
@@ -245,22 +239,33 @@ export default {
       this.isBottomOfPage = this.documentH === this.positionTop + this.wnd.height? true : false
     },
 
+    tlIntroCompleted () {
+      console.log('timeline for Intro completed')
+    },
+
     initScrollControls () {
-            
+      // 1. Создаем контроллер для области прокрутки, области, в которой будут анимироваться наши слайды.
+      this.controller = new ScrollMagic.Controller({
+        globalSceneOptions: {
+          triggerHook: 0.4,
+          offset: 0 // needed to get a correct 'leave' event on the first slide
+        }
+      })
       // создаем новый таймлайн для анимаций (новую анимацию)
-      var tl = new TimelineLite()
-        .to('#intro .slide-background', 3, {opacity: 0.5})                          // анимируем заголовок титульного слайда
+      var tl = new TimelineMax({onComplete: this.tlIntroCompleted})
+        .to('#intro .slide-background', 2.5, {opacity: 0.0, ease:new SlowMo(0.2, 0.8) })                          // анимируем заголовок титульного слайда
  
 
 
       // 2. Создаем сцену для главного
       let slideIntoSelector = `#intro`
+      let slideDuration = this.$refs['intro'][0].$el.clientHeight
+      
       this.scenes['intro'] = new ScrollMagic.Scene({
         triggerElement: slideIntoSelector,
-        duration: 200
+        duration: slideDuration
       })
-        .setPin(slideIntoSelector)
-        .update()
+        //.setPin(slideIntoSelector)
         .setClassToggle(slideIntoSelector, "visited")
         // .on('enter leave', function(event) {
         //   console.log('.....')
@@ -271,11 +276,9 @@ export default {
         // .on('start', function(event) {
         //   console.log('on START first slide')
         // })
-        //.setTween(tl)
-        .addIndicators({
-          name: 'firstSlide'
-        })
-        .addTo(controller)
+        .setTween(tl)
+        .addIndicators()
+        .addTo(this.controller)
       
     },
 

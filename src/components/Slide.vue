@@ -61,7 +61,11 @@ export default {
     },
 
     getUniqIdForContainer () {
-      return `slideContent${this.id.toUpperCase()}`
+      return `slideContent${this.getIdWithUppercasedFirstLetter}`
+    },
+
+    getIdWithUppercasedFirstLetter () {
+      return this.id.charAt(0).toUpperCase() + this.id.slice(1);
     },
 
     showFooter () {
