@@ -75,12 +75,12 @@ export default {
   height: 50px;
   background-position-y: bottom;
   z-index: 1;
-  transition: animation 200ms;
-  animation:spinBack 300ms linear;
+  transition: animation 400ms;
+  animation: spinBack 400ms linear;
   will-change: animation;
 
   &.reverted {
-    animation:spin 300ms linear;
+    animation: spin 400ms linear;
     cursor: pointer;
   }
 
@@ -143,14 +143,26 @@ export default {
 }
 
 @keyframes spin { 
+  from {
+    transform:rotate(0deg) scale(1);
+  }
+  50% {
+    transform:rotate(180deg) scale(0.3);
+  }
   to { 
-    transform:rotate(360deg); 
+    transform:rotate(360deg) scale(1);
   } 
 }
 
 @keyframes spinBack { 
+  from {
+    transform:rotate(0deg) scale(1);
+  }
+  50% {
+    transform:rotate(-180deg) scale(0.3);
+  }
   to { 
-    transform:rotate(-360deg); 
+    transform:rotate(-360deg) scale(1);
   } 
 }
 
