@@ -275,7 +275,7 @@ export default {
 
         // создаем новый таймлайн для анимации для каждого слайда
         const slideTween = new TimelineMax()
-          .to(`#${element.id} .slide-background`, 3, {opacity: 1.0, ease:new SlowMo(0.2, 0.8) },'-=1.0')
+          .to(`#${element.id} .slide-background`, 3, {opacity: 1.0, ease:new SlowMo(0.2, 0.8) })
           .to(`#${element.id} .slide-background`, 3, {opacity: 0.0, scale: 1.2, ease:new SlowMo(0.3, 0.8)})
   
         // 3. Создаем сцену для контентного слайда
