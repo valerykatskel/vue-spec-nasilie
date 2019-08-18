@@ -27,6 +27,10 @@
 </template>
 
 <script>
+import { TimelineLite, SlowMo } from 'gsap'
+import ScrollMagic from 'scrollmagic'
+import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators'
+import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap'
 import ReadMoreIndicator from './components/ReadMoreIndicator.vue'
 import Slide from './components/Slide.vue'
 import AppFooter from './components/AppFooter.vue'
@@ -239,10 +243,6 @@ export default {
       this.isBottomOfPage = this.documentH === this.positionTop + this.wnd.height? true : false
     },
 
-    tlIntroCompleted () {
-      console.log('timeline for Intro completed')
-    },
-
     initScrollControls () {
       // 1. Создаем контроллер для области прокрутки, области, в которой будут анимироваться наши слайды.
       this.controller = new ScrollMagic.Controller({
@@ -253,7 +253,7 @@ export default {
       })
 
       // создаем новый таймлайн для анимаций (новую анимацию)
-      var tl = new TimelineMax({onComplete: this.tlIntroCompleted})
+      var tl = new TimelineLite()
         .to('#intro .slide-background', 1.5, {opacity: 0.0}) 
  
       // 2. Создаем сцену для главного
@@ -270,12 +270,11 @@ export default {
         .addTo(this.controller)
 
       
-      this.slides.forEach((element, index) => {
+      this.slides.forEach(element => {
         if (element.id === 'intro') return
-        console.log(index)
 
         // создаем новый таймлайн для анимации для каждого слайда
-        const slideTween = new TimelineMax()
+        const slideTween = new TimelineLite()
           .to(`#${element.id} .slide-background`, 2, {opacity: 1.0})
           .addLabel('bgOpacityFade', '+=1.5')
           .to(`#${element.id} .slide-background`, 4, {opacity: 0.0, ease:new SlowMo(0.1, 0.9)})
@@ -292,64 +291,11 @@ export default {
           .setClassToggle(slideSelector, "visited")
           .setTween(slideTween)
           //.addIndicators()
-          .on('end', function(event){
-            this.$refs[element.id][0]
-            console.log(`закончилась секция ${element.id}`)
-          })
           .addTo(this.controller)
-
-
       })
 
 
     },
-
-    navigateScene (event) {
-      const slide = event.target.getPin()
-    },
-
-    getScrollHeight (num) {
-      //var stepCount = slide.find('.step').size() + 1;
-
-      return $(window).innerHeight() * num;
-    },
-
-    // addIntroSlideAnimations() {
-    //   const delay = 0.7
-    //   const slide = this.$refs.intro
-    //   const tween = new TimelineMax();      // создаем анимацию
-    //   const scene = new ScrollScene({
-    //     triggerElement: slide,
-    //     duration: 0//getScrollHeight(slide)
-    //   });
-
-    //   // slide animation steps
-    //   addStepAnimations(slide, tween);
-
-    //   // add delay at the end
-    //   tween.add(TweenMax.from(
-    //     slide.find('defs').first(),
-    //     delay, {}
-    //   ));
-
-    //   // debugEvents(scene);
-
-    //   scene
-    //     .setTween(tween)
-    //     .setPin(slide)
-    //     .on('enter leave', navigateScene)
-    //     .on('end', function(event){
-    //       slide.addClass('stayWhereYouAre');
-    //     })
-    //     .on('start', function(event){
-    //       slides.removeClass('stayWhereYouAre');
-    //     })
-    //     .addTo(controller);
-
-    //   // debug scene
-    //   // scene.addIndicators();
-    //   return scene;
-    // }
   }
 }
 </script>
