@@ -1,7 +1,7 @@
 .slide {
   width: 100%;
   margin-top: 100vh;
-  padding-bottom: 100vh;
+  padding-bottom: 120vh;
   margin-top: -80vh;
   padding-top: 290vh;
 
@@ -17,7 +17,7 @@
     height: 100vh;
     position: fixed;
     top:0;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: 50%;
     z-index: -2;
@@ -85,6 +85,7 @@
   &#intro {
     margin-top: 40vh;
     padding-top: 0;
+    padding-bottom: 90vh;
     .slide-header--title {
       font-size: 70px;
       line-height: 82px;
@@ -95,6 +96,7 @@
     }
     .slide-background {
       opacity: 1;
+      background-size: cover;
     }
   }
 
@@ -112,6 +114,10 @@
           margin: 0;
         }
       }
+    }
+    
+    .slide-background {
+      background-size: cover;
     }
   }  
 

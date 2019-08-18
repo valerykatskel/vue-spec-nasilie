@@ -69,7 +69,7 @@ export default {
     },
 
     showFooter () {
-      return this.footer !== ''
+      return this.footer !== undefined
     },
 
     addBackgroundInline () {

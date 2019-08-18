@@ -251,9 +251,10 @@ export default {
           offset: 0 // needed to get a correct 'leave' event on the first slide
         }
       })
+
       // создаем новый таймлайн для анимаций (новую анимацию)
       var tl = new TimelineMax({onComplete: this.tlIntroCompleted})
-        .to('#intro .slide-background', 2.5, {opacity: 0.0, ease:new SlowMo(0.2, 0.6) })                          // анимируем заголовок титульного слайда
+        .to('#intro .slide-background', 1.5, {opacity: 0.0}) 
  
       // 2. Создаем сцену для главного
       let slideIntoSelector = `#intro`
@@ -275,8 +276,10 @@ export default {
 
         // создаем новый таймлайн для анимации для каждого слайда
         const slideTween = new TimelineMax()
-          .to(`#${element.id} .slide-background`, 3, {opacity: 1.0, ease:new SlowMo(0.2, 0.8) })
-          .to(`#${element.id} .slide-background`, 3, {opacity: 0.0, scale: 1.2, ease:new SlowMo(0.3, 0.8)})
+          .to(`#${element.id} .slide-background`, 2, {opacity: 1.0})
+          .addLabel('bgOpacityFade', '+=1.5')
+          .to(`#${element.id} .slide-background`, 4, {opacity: 0.0, ease:new SlowMo(0.1, 0.9)})
+          .to(`#${element.id} .slide-background`, 2.3, {scale: 1.3},'bgOpacityFade')
   
         // 3. Создаем сцену для контентного слайда
         let slideSelector = `#${element.id}`
