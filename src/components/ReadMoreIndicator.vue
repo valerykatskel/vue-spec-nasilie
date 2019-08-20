@@ -89,6 +89,11 @@ export default {
     color: #fff;
     display: inline-block;
     width: 100%;
+
+    @media (max-width: 1360px) {
+      font-size: 15px;
+      line-height: 21px;
+    }
   }
 
   .readmore-arrow {

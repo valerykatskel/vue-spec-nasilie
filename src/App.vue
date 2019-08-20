@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <div class="logo"><img src="./assets/images/icons/logo.png" alt="TUT.BY"></div>
+
     <read-more-indicator 
       title="Читать далее"
       topText="Наверх"
@@ -279,6 +281,7 @@ export default {
           .addLabel('bgOpacityFade', '+=1.5')
           .to(`#${element.id} .slide-background`, 4, {opacity: 0.0, ease:new SlowMo(0.1, 0.9)})
           .to(`#${element.id} .slide-background`, 2.3, {scale: 1.3},'bgOpacityFade')
+          .to(`#${element.id} .slide-background`, 2.3, { css: { '-webkit-filter': 'blur(5px)' }},'bgOpacityFade');
   
         // 3. Создаем сцену для контентного слайда
         let slideSelector = `#${element.id}`

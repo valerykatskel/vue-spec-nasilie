@@ -1,5 +1,5 @@
 .slide {
-  width: 100%;
+  width: 100vw;
   margin-top: 100vh;
   padding-bottom: 120vh;
   margin-top: -80vh;
@@ -38,11 +38,25 @@
       line-height: 52px;
       margin-bottom: 15px;
       font-family: "Helvetica Bold";
+      
+      @media (max-width: 480px) {
+        font-size: 30px;
+        line-height: 40px;
+      }
+      @media (max-width: 320px) {
+        font-size: 25px;
+        line-height: 40px;
+      }
     }
 
     .slide-header--description {
       font-size: 19px;
       line-height: 30px;
+
+      @media (max-width: 480px) {
+        font-size: 15px;
+        line-height: 21px;
+      }
     }
   }
   
@@ -90,6 +104,16 @@
       font-size: 70px;
       line-height: 82px;
       margin-bottom: 30px;
+
+      @media (max-width: 1360px) {
+        font-size: 50px;
+        line-height: 52px;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 35px;
+        line-height: 40px;
+      }      
     }
     .container {
       margin-top: 100vh;
