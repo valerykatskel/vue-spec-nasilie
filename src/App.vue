@@ -19,7 +19,7 @@
       <read-more-indicator 
       title="Читать далее"
       topText="Наверх"
-      :revert="true"
+      :revert="false"
       :isBottomOfPage="isBottomOfPage"
       :animatedArrow="false"
     />
@@ -284,14 +284,19 @@ export default {
         // для последнего слайда делаем лишь анимацию появления
         const slideTween = new TimelineLite()
         
-        slideTween
-          .to(`#${element.id} .slide-background`, 2, {opacity: 1.0})
-          .addLabel('bgOpacityFade', '+=1.5')
+        if (element.id === 'outro') {
+          slideTween.to(`#${element.id} .slide-background`, 2, {opacity: 0.5})
+        } else {
+          slideTween.to(`#${element.id} .slide-background`, 2, {opacity: 0.8})
+        }
+
+
+        slideTween.addLabel('bgOpacityFade', '+=0.0')
 
         if (element.id !== 'outro') {
           slideTween
-            .to(`#${element.id} .slide-background`, 4, {opacity: 0.0, ease:new SlowMo(0.1, 0.9)})
-            .to(`#${element.id} .slide-background`, 2.3, {scale: 1.3},'bgOpacityFade')
+            .to(`#${element.id} .slide-background`, 4, {opacity: 0.0})
+            .to(`#${element.id} .slide-background`, 2.3, {scale: 1.5},'bgOpacityFade')
             .to(`#${element.id} .slide-background`, 2.3, { css: { '-webkit-filter': 'blur(8.0px)' }},'bgOpacityFade');
         }
 

@@ -1,4 +1,9 @@
 .container-footer {
+  margin-top: 40px;
+
+  @media(max-width: 480px) {
+    margin-top: 30px;
+  }
   .container-i-text {
     background: rgba(66, 17, 23, 0.7);
 

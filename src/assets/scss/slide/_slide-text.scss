@@ -2,7 +2,15 @@
   padding: 60px;
   width: 100%;
   box-sizing: border-box;
-  
+
+  @media (max-width: 780px) {
+    padding: 40px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px;
+  }
+
   p,figcaption {
     font-family: "robotoregular";
     font-size: 21px;
@@ -23,11 +31,10 @@
     margin-top: 20px;
     margin-bottom: 0;
 
-
     @media (max-width: 780px) {
       padding-top: 0;
     }
-    
+
     @media (max-width: 480px) {
       padding-top: 0;
     }
@@ -37,12 +44,4 @@
     }
   }
 
-  
-  @media (max-width: 780px) {
-    padding: 40px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 20px;
-  }
 }

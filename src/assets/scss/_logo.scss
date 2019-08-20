@@ -1,0 +1,17 @@
+.logo {
+  top: 20px;
+  position: fixed;
+  left: 20px;
+  z-index: 1;
+  img {
+    opacity: 0.5;
+    transition: opacity 300ms;
+  }
+  .logo--link {
+    &:hover {
+      img {
+        opacity: 1;
+      }
+    }
+  }
+}

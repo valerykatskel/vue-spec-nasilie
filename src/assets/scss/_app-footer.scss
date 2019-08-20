@@ -3,15 +3,20 @@
 
 .app-footer {
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 65px;
+  margin-bottom: 50px;
   
   .container {
     .container-i-text {
       padding-top: 0;
       padding-bottom: 0;
       display: flex;
+      flex-direction: row;
       align-items: start;
       justify-content: space-between;
+
+      @media (max-width: 480px) {
+        flex-direction: column;
+      }
     }
   }
 }
