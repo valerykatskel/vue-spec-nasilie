@@ -4,11 +4,10 @@
   box-sizing: border-box;
 
   @media (max-width: 480px) {
-    max-width: 450px;
+    max-width: 100%;
   }
 
   @media (max-width: 320px) {
-    max-width: 290px;
     .container-i-text {
       padding: 0;
     }
@@ -21,6 +20,11 @@
     width: 100%;
     box-sizing: border-box;
     padding-bottom: 55px;
+    
+    @media (max-width: 480px) {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
   }
 
   .container-footer {

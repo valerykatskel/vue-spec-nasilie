@@ -1,5 +1,5 @@
 .slide {
-  width: 100vw;
+  width: 100%;
   margin-top: 100vh;
   padding-bottom: 120vh;
   margin-top: -80vh;
@@ -31,6 +31,8 @@
   
   .slide-header {
     text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
 
     .slide-header--title {
       margin: 0;
@@ -147,8 +149,11 @@
 
   &:not(#intro) {
     .slide-header {
-      width: 700px;
+      max-width: 600px;
       margin: 0 auto;
+      @media (max-width: 480px) {
+        max-width: 420px;
+      }
 
       .slide-header--title,
       .slide-header--description {

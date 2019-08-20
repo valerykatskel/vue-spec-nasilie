@@ -11,13 +11,13 @@
     </header>
 
     <div class="container" :id='this.getUniqIdForContainer'>
-      <div class="container-i-text">
+      <div v-if="this.showHtml" class="container-i-text">
         <div v-html="this.html"></div>
-        <figure v-if="this.showContentImage">
-          <img :src="this.contentImage.url" :alt="this.contentImage.caption">
-          <figcaption>{{this.contentImage.caption}}</figcaption>
-        </figure>
       </div>    
+      <figure v-if="this.showContentImage">
+        <img :src="this.contentImage.url" :alt="this.contentImage.caption">
+        <figcaption>{{this.contentImage.caption}}</figcaption>
+      </figure>
       
       <footer v-if="this.showFooter" class="container-footer">
         <div class="container-i-text" v-html="this.footer"></div>
@@ -70,6 +70,10 @@ export default {
 
     showFooter () {
       return this.footer !== undefined
+    },
+
+    showHtml () {
+      return this.html !== undefined
     },
 
     addBackgroundInline () {
