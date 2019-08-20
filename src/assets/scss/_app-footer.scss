@@ -1,0 +1,17 @@
+@import "./app-footer/social";
+@import "./app-footer/copyright";
+
+.app-footer {
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 65px;
+  
+  .container {
+    .container-i-text {
+      padding-top: 0;
+      padding-bottom: 0;
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+    }
+  }
+}

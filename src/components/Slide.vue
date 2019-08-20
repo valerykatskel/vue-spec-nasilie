@@ -7,7 +7,7 @@
     
     <header v-if="this.showSlideHeader" class="slide-header"> 
       <h2 class="slide-header--title">{{this.title}}</h2>
-      <div class="slide-header--description">{{this.description}}</div>
+      <div v-if="this.showHeaderDescription" class="slide-header--description">{{this.description}}</div>
     </header>
 
     <div class="container" :id='this.getUniqIdForContainer'>
@@ -74,6 +74,10 @@ export default {
 
     showHtml () {
       return this.html !== undefined
+    },
+
+    showHeaderDescription () {
+      return this.description !== undefined
     },
 
     addBackgroundInline () {

@@ -1,6 +1,6 @@
 <template>
   <div 
-    :class="addRevertedClass"
+    :class="[addRevertedClass, this.addAnimationForArrow]"
     class="readmore"
     @click="clickMoveTop"
   >
@@ -30,6 +30,7 @@ export default {
     topText: String,
     revert: Boolean,
     isBottomOfPage: Boolean,
+    animatedArrow: Boolean,
   },
 
   methods: {
@@ -58,6 +59,10 @@ export default {
 
     showReadMoreBlock () {
       return this.isBottomOfPage && this.revert
+    },
+
+    addAnimationForArrow () {
+      return this.animatedArrow? 'animated-arrow' : ''
     }
   }
 }
@@ -74,11 +79,14 @@ export default {
   height: 50px;
   background-position-y: bottom;
   z-index: 1;
-  transition: animation 400ms;
-  animation: spinBack 400ms linear;
-  will-change: animation;
+  
+  &.animated-arrow {
+    transition: animation 400ms;
+    animation: spinBack 400ms linear;
+    will-change: animation;
+  }
 
-  &.reverted {
+  &.reverted.animated-arrow {
     animation: spin 400ms linear;
     cursor: pointer;
   }
@@ -103,8 +111,12 @@ export default {
     bottom: 0;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAOCAMAAAAPOFwLAAAAaVBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8G612AAAAInRSTlMABPzyfx8OWTreo0z26uXY0sXEwbmkm4NvNBIBpnhkLyMi+Kud8wAAAJJJREFUGNN1j1kSgyAQREdAFnFLNK5Z+/6HDKSsGCK8j6mu6o95TeIiKYEsBE3M6HirDZuILGciO5aZYKX1Ya5xyv/b/Ixq3mILrsJWcTSvr0MPeMPdCeiWn0cDYPTuBFxDnRvgDDcnYFwpRJXwht4J7B6ZWcEZKu6upQjPBh/qB0VZOjjanBJkBdBLSrKOQzjoDRZkCSBsYkiwAAAAAElFTkSuQmCC');
     background-repeat: no-repeat;
-    animation: pointUpToDown 1300ms infinite linear;
     display: inline-block;
+  }
+  &.animated-arrow {
+    .readmore-arrow {
+      animation: pointUpToDown 1300ms infinite linear;
+    }
   }
   
   .showtop-arrow {

@@ -1,0 +1,45 @@
+.footer-social {
+  text-align: right;
+  margin-left: 20px;
+
+  div {
+    height: 30px;
+
+    span {
+      cursor: pointer;
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.2); 
+      border-radius: 3px;
+      margin-left: 5px;
+      width: 30px;
+      height: 30px;
+      background-position: 50%;
+      background-repeat: no-repeat;
+      transition: background-color 300ms;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.35);
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &[data-link="#share-facebook"] {
+        background-image: url("../images/icons/icon-fb.png");
+      }
+
+      &[data-link="#share-vk"] {
+        background-image: url("../images/icons/icon-vk.png");
+      }
+
+      &[data-link="#share-twitter"] {
+        background-image: url("../images/icons/icon-fb.png");
+      }
+
+      &[data-link="#share-odnoklassniki"] {
+        background-image: url("../images/icons/icon-ok.png");
+      }
+    }
+  }
+}

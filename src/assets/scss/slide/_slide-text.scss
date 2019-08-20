@@ -1,0 +1,48 @@
+.container-i-text {
+  padding: 60px;
+  width: 100%;
+  box-sizing: border-box;
+  
+  p,figcaption {
+    font-family: "robotoregular";
+    font-size: 21px;
+    line-height: 32px;
+
+    @media (max-width: 780px) {
+      font-size: 17px;
+      line-height: 25px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 15px;
+      line-height: 21px;
+    }
+  }
+
+  p {
+    margin-top: 20px;
+    margin-bottom: 0;
+
+
+    @media (max-width: 780px) {
+      padding-top: 0;
+    }
+    
+    @media (max-width: 480px) {
+      padding-top: 0;
+    }
+    
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  
+  @media (max-width: 780px) {
+    padding: 40px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px;
+  }
+}

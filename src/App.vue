@@ -2,13 +2,6 @@
   <div id="app">
     <div class="logo"><a class="logo--link" href="https://www.tut.by/"><img src="./assets/images/icons/logo.svg" alt="TUT.BY"></a></div>
 
-    <read-more-indicator 
-      title="Читать далее"
-      topText="Наверх"
-      :revert="true"
-      :isBottomOfPage="isBottomOfPage"
-    />
-
     <div class="scroll-container" ref="scrollContainer">
       <slide
         v-for="slide in slides"
@@ -22,6 +15,14 @@
         :contentImage="slide.contentImage"
         :footer="slide.footer"
       />
+      
+      <read-more-indicator 
+      title="Читать далее"
+      topText="Наверх"
+      :revert="true"
+      :isBottomOfPage="isBottomOfPage"
+      :animatedArrow="false"
+    />
     </div>
 
     <app-footer />
@@ -84,7 +85,8 @@ export default {
         {
           id: 'history01',
           background: require('./assets/images/slide-01/background.jpg'),
-          title: 'Светлана Соколовская',
+          title: `Светлана
+          Соколовская`,
           description: '34 года, актриса, Минск',
           html: `<p>Светлана Соколовская 1 января 2018 года, в новогоднюю ночь, пошла с друзьями на праздничную елку. Сотрудники ОМОН не пустили компанию 
                   за огражденную территорию, возник спор, в результате чего молодых людей задержали.</p>
@@ -111,7 +113,8 @@ export default {
         {
           id: 'history02',
           background: require('./assets/images/slide-02/background.jpg'),
-          title: 'Сергей Созонович',
+          title: `Сергей
+          Созонович`,
           description: '23 года, музыкант, Столин',
           html: `<p>У Сергея было несколько правонарушений, в том числе за граффити с надписью, направленной против милиции. В один день милиционеры приехали 
                 на работу к его отцу, вместе нашли Сергея.</p>
@@ -131,7 +134,8 @@ export default {
         {
           id: 'history03',
           background: require('./assets/images/slide-03/background.jpg'),
-          title: 'Борис Змитрович',
+          title: `Борис
+          Змитрович`,
           description: '30 лет, водитель, Сморгонь',
           html: `<p>Что произошло? Борис рассказывает, что милиция задержала его ночью 14 января 2018 года, когда он возвращался с юбилея отца. Во время празднования 
                   он выпил около 300 граммов водки. На выходе из ресторана поссорился с женой, и она вызвала милицию. Борис отказался ехать в отделение. Во время 
@@ -154,7 +158,8 @@ export default {
         {
           id: 'history04',
           background: require('./assets/images/slide-04/background.jpg'),
-          title: 'Татьяна Самникова-Мастыкина',
+          title: `Татьяна
+          Самникова-Мастыкина`,
           description: '32 года, волонтерка правозащитной организации, Минск',
           html: `<p>Татьяна Самникова-Мастыкина вспоминает, как на День Воли в 2018-м ее и других волонтеров Белорусского Хельсинкского комитета задержали в центре Минска 
                   для проверки документов. Дальше повезли в РУВД, где во внутреннем дворике Таня и ее коллеги провели три часа, стоя лицом к стене. В отделении ее заставили 
@@ -276,13 +281,20 @@ export default {
         if (element.id === 'intro') return
 
         // создаем новый таймлайн для анимации для каждого слайда
+        // для последнего слайда делаем лишь анимацию появления
         const slideTween = new TimelineLite()
+        
+        slideTween
           .to(`#${element.id} .slide-background`, 2, {opacity: 1.0})
           .addLabel('bgOpacityFade', '+=1.5')
-          .to(`#${element.id} .slide-background`, 4, {opacity: 0.0, ease:new SlowMo(0.1, 0.9)})
-          .to(`#${element.id} .slide-background`, 2.3, {scale: 1.3},'bgOpacityFade')
-          .to(`#${element.id} .slide-background`, 2.3, { css: { '-webkit-filter': 'blur(8.0px)' }},'bgOpacityFade');
-  
+
+        if (element.id !== 'outro') {
+          slideTween
+            .to(`#${element.id} .slide-background`, 4, {opacity: 0.0, ease:new SlowMo(0.1, 0.9)})
+            .to(`#${element.id} .slide-background`, 2.3, {scale: 1.3},'bgOpacityFade')
+            .to(`#${element.id} .slide-background`, 2.3, { css: { '-webkit-filter': 'blur(8.0px)' }},'bgOpacityFade');
+        }
+
         // 3. Создаем сцену для контентного слайда
         let slideSelector = `#${element.id}`
         let slideDuration = this.$refs[element.id][0].$el.clientHeight
@@ -304,72 +316,5 @@ export default {
 </script>
 
 <style lang="scss">
-.app-footer {
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 65px;
-  .container {
-    .container-i-text{
-      display: flex;
-      align-items: center;
-      
-      .footer-copyright {
-        p {
-          font-family: Arial;
-          font-size: 15px;
-          line-height: 30px;
-        }
-      }
-      
-      .footer-social {
-        text-align: right;
-        div {
-          height: 30px;
-        }
-      }
-      
-      .footer-copyright,
-      .footer-social {
-        width: 50%;
-        
-        span {
-          cursor: pointer;
-          display: inline-block;
-          background-color: rgba(255, 255, 255, 0.2); 
-          border-radius: 3px;
-          margin-left: 5px;
-          width: 30px;
-          height: 30px;
-          background-position: 50%;
-          background-repeat: no-repeat;
-          transition: background-color 300ms;
 
-          &:hover {
-            background-color: rgba(255, 255, 255, 0.35);
-          }
-
-          &:first-child {
-            margin-left: 0;
-          }
-
-          &[data-link="#share-facebook"] {
-            background-image: url("./assets/images/icons/icon-fb.png");
-          }
-
-          &[data-link="#share-vk"] {
-            background-image: url("./assets/images/icons/icon-vk.png");
-          }
-
-          &[data-link="#share-twitter"] {
-            background-image: url("./assets/images/icons/icon-fb.png");
-          }
-
-          &[data-link="#share-odnoklassniki"] {
-            background-image: url("./assets/images/icons/icon-ok.png");
-          }
-
-        }
-      }
-    }
-  }
-}
 </style>

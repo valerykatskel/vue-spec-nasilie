@@ -1,0 +1,26 @@
+.readmore {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+.slide {
+  position: relative;
+  &.slide--history01,
+  &.slide--history02,
+  &.slide--history03,
+  &.slide--history04,
+  &.slide--outro {
+    &.visited {
+      &~.readmore {
+        opacity: 0;
+      }
+    }
+  }
+  &.slide--intro {
+  &.visited {
+    &~.readmore {
+      opacity: 1;
+    }
+  } 
+  }
+}
+  
