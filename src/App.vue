@@ -268,7 +268,7 @@ export default {
       })
         .setClassToggle(slideIntoSelector, "visited")
         .setTween(tl)
-        //.addIndicators()
+        .addIndicators()
         .addTo(this.controller)
 
       
@@ -281,7 +281,7 @@ export default {
           .addLabel('bgOpacityFade', '+=1.5')
           .to(`#${element.id} .slide-background`, 4, {opacity: 0.0, ease:new SlowMo(0.1, 0.9)})
           .to(`#${element.id} .slide-background`, 2.3, {scale: 1.3},'bgOpacityFade')
-          .to(`#${element.id} .slide-background`, 2.3, { css: { '-webkit-filter': 'blur(8px)' }},'bgOpacityFade');
+          .to(`#${element.id} .slide-background`, 2.3, { css: { '-webkit-filter': 'blur(8.0px)' }},'bgOpacityFade');
   
         // 3. Создаем сцену для контентного слайда
         let slideSelector = `#${element.id}`
@@ -293,7 +293,7 @@ export default {
         })
           .setClassToggle(slideSelector, "visited")
           .setTween(slideTween)
-          //.addIndicators()
+          .addIndicators()
           .addTo(this.controller)
       })
 

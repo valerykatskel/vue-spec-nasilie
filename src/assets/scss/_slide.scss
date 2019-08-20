@@ -1,4 +1,44 @@
 .slide {
+  position: relative;
+  &:before,
+  &:after {
+    top: 0;
+    right: 0;
+    color: #f32828;
+    position: absolute;
+    display: block;
+    font-size: 10px;
+    padding: 0;
+    line-height: 1;
+    background: white;
+  }
+  &:after {
+    top: auto;
+    bottom: 0;
+  }
+}
+.slide--history01 {
+  &:before {
+    content: 'history01';
+  }
+}
+.slide--history02 {
+  &:before {
+    content: 'history02';
+  }
+}
+.slide--history03 {
+  &:before {
+    content: 'history03';
+  }
+}
+.slide--history04 {
+  &:before {
+    content: 'history04';
+  }
+}
+
+.slide {
   width: 100%;
   margin-top: 100vh;
   padding-bottom: 120vh;
@@ -102,7 +142,7 @@
   &#intro {
     margin-top: 40vh;
     padding-top: 0;
-    padding-bottom: 90vh;
+    padding-bottom: 100vh;
     .slide-header--title {
       font-size: 70px;
       line-height: 82px;
