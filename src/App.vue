@@ -19,9 +19,9 @@
       <read-more-indicator 
       title="Читать далее"
       topText="Наверх"
-      :revert="false"
+      :revert="true"
       :isBottomOfPage="isBottomOfPage"
-      :animatedArrow="false"
+      :animatedArrow="true"
     />
     </div>
 
@@ -287,7 +287,7 @@ export default {
         if (element.id === 'outro') {
           slideTween.to(`#${element.id} .slide-background`, 2, {opacity: 0.5})
         } else {
-          slideTween.to(`#${element.id} .slide-background`, 2, {opacity: 0.8})
+          slideTween.to(`#${element.id} .slide-background`, 0.4, {opacity: 0.8})
         }
 
 
@@ -296,7 +296,7 @@ export default {
         if (element.id !== 'outro') {
           slideTween
             .to(`#${element.id} .slide-background`, 4, {opacity: 0.0})
-            .to(`#${element.id} .slide-background`, 2.3, {scale: 1.5},'bgOpacityFade')
+            .to(`#${element.id} .slide-background`, 2.3, {scale: 1.8},'bgOpacityFade')
             .to(`#${element.id} .slide-background`, 2.3, { css: { '-webkit-filter': 'blur(8.0px)' }},'bgOpacityFade');
         }
 
