@@ -3,7 +3,7 @@
     
     <a :name="this.id"/>
     
-    <div class="slide-background" :style="this.addBackgroundInline"></div>
+    <div v-if="this.showSlideBackground" class="slide-background" :style="this.addBackgroundInline"></div>
     
     <header v-if="this.showSlideHeader" class="slide-header"> 
       <h2 class="slide-header--title">{{this.title}}</h2>
@@ -78,6 +78,10 @@ export default {
 
     showHeaderDescription () {
       return this.description !== undefined
+    },
+
+    showSlideBackground () {
+      return this.id !== 'intro' && this.id !== 'outro' 
     },
 
     addBackgroundInline () {
