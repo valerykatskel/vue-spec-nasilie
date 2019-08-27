@@ -283,21 +283,28 @@ export default {
         // создаем новый таймлайн для анимации для каждого слайда
         // для последнего слайда делаем лишь анимацию появления
         const slideTween = new TimelineLite()
+        const slideHeaderTween = new TimelineLite()
         
         if (element.id === 'outro') {
           slideTween.to(`#${element.id} .slide-background`, 2, {opacity: 0.5})
         } else {
-          slideTween.to(`#${element.id} .slide-background`, 0.4, {opacity: 0.8})
+          slideTween.fromTo(`#${element.id} .slide-background`, 0.8, {scale: 1.0, opacity: 0.0}, {scale: 1.0, opacity: 0.8}, '+=0.0')
         }
 
 
-        slideTween.addLabel('bgOpacityFade', '+=0.0')
+        slideTween.addLabel('startScale', '+=0.3')
+        slideTween.addLabel('bgOpacityBlur', '+=0.9')
+        slideTween.addLabel('bgOpacityFadeHeader', '+=1.1')
 
         if (element.id !== 'outro') {
           slideTween
-            .to(`#${element.id} .slide-background`, 4, {opacity: 0.0})
-            .to(`#${element.id} .slide-background`, 2.3, {scale: 1.8},'bgOpacityFade')
-            .to(`#${element.id} .slide-background`, 2.3, { css: { '-webkit-filter': 'blur(8.0px)' }},'bgOpacityFade');
+            .to(`#${element.id} .slide-background`, 4, {opacity: 0.0}, 'bgOpacityBlur')
+            .to(`#${element.id} .slide-background`, 2.3, {scale: 1.8},'startScale')
+            //.to(`#${element.id} .slide-content-history`, 1, {y: -170}, 'bgOpacityFadeHeader')
+            .to(`#${element.id} .slide-background`, 2.3, { css: { '-webkit-filter': 'blur(8.0px)' }},'bgOpacityBlur');
+            
+          
+            
         }
 
         // 3. Создаем сцену для контентного слайда
@@ -310,6 +317,7 @@ export default {
         })
           .setClassToggle(slideSelector, "visited")
           .setTween(slideTween)
+          //.setTween(slideHeaderTween)
           .addIndicators()
           .addTo(this.controller)
       })

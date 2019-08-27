@@ -10,7 +10,7 @@
       <div v-if="this.showHeaderDescription" class="slide-header--description">{{this.description}}</div>
     </header>
 
-    <div class="container" :id='this.getUniqIdForContainer'>
+    <div class="container slide-content-history" :id='this.getUniqIdForContainer'>
       <div v-if="this.showHtml" class="container-i-text">
         <div v-html="this.html"></div>
       </div>    
