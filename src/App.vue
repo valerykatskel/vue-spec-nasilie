@@ -21,7 +21,7 @@
       topText="Наверх"
       :revert="true"
       :isBottomOfPage="isBottomOfPage"
-      :animatedArrow="true"
+      :animatedArrow="false"
     />
     </div>
 
