@@ -22,20 +22,40 @@
     margin-top: 40vh;
     padding-top: 0;
     padding-bottom: 100vh;
-    .slide-header--title {
-      font-size: 70px;
-      line-height: 82px;
-      margin-bottom: 30px;
 
-      @media (max-width: 1360px) {
-        font-size: 50px;
-        line-height: 52px;
+    .slide-header--title {
+      font-size: 76px;
+      line-height: 82px;
+      padding-bottom: 40px;
+      margin-bottom: 40px;
+      position: relative;
+
+      @media (max-width: 780px) {
+        font-size: 46px;
+        line-height: 50px;
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+        &:before {
+          width: 30px!important;
+        }
       }
 
       @media (max-width: 480px) {
-        font-size: 35px;
-        line-height: 40px;
-      }      
+        font-size: 30px;
+        line-height: 36px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
+
+      &:before {
+        position: absolute;
+        content: '';
+        width: 60px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.5);
+        left: 0;
+        bottom: 0;
+      }   
     }
     .container {
       margin-top: 70vh;
