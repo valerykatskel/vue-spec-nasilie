@@ -11,12 +11,24 @@
     //background: rgba(66, 17, 23, 0.7);
 
     .b-footnote {
-      margin-top: 55px;
+      margin-top: 60px;
     
       p {
         color: rgba(255, 255, 255, 0.5);
         font-size: 13px;
         line-height: 18px;
+        font-size: 17px;
+        line-height: 25px;
+        
+        @media (max-width: 780px) {
+          font-size: 15px;
+          line-height: 21px;
+        }
+    
+        @media (max-width: 480px) {
+          font-size: 13px;
+          line-height: 18px;
+        }
       }
     }
   }
