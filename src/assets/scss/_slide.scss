@@ -57,6 +57,21 @@
         bottom: 0;
       }   
     }
+    .slide-header--description {
+      color: rgba(255, 255, 255, 1);
+      font-size: 25px;
+      line-height: 37px;
+
+      @media (max-width: 780px) {
+        font-size: 21px;
+        line-height: 32px;
+      }
+
+      @media (max-width: 480px) {
+        font-size: 17px;
+        line-height: 25px;
+      }
+    }
     .container {
       margin-top: 70vh;
     }
