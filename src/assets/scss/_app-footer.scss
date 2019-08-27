@@ -14,7 +14,11 @@
       align-items: center;
       justify-content: space-between;
 
+      @media (max-width: 780px) {
+        
+      }
       @media (max-width: 480px) {
+        align-items: start;
         flex-direction: column;
       }
     }

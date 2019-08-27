@@ -13,6 +13,12 @@
     .b-footnote {
       margin-top: 60px;
     
+      @media (max-width: 780px) {
+        margin-top: 40px;
+      }
+      @media (max-width: 480px) {
+        margin-top: 20px;
+      }
       p {
         color: rgba(255, 255, 255, 0.5);
         font-size: 13px;
