@@ -7,7 +7,6 @@
 
 .slide {
   width: 100%;
-  margin-top: 100vh;
   padding-bottom: 120vh;
   margin-top: -145vh;
   padding-top: 115vh;
@@ -47,9 +46,23 @@
     }
   }
 
+  &#history04 {
+    padding-bottom: 0;
+  }
+
   &#outro {
     padding-bottom: 0;
-    padding-top: 100vh;
+    padding-top: 140px;
+    margin-top: 0;
+
+    @media (max-width: 768px) {
+      padding-top: 120px;
+    }
+
+    @media (max-width: 480px) {
+      padding-top: 100px;
+    }  
+
     .container-footer {
       margin-top: 80px;
       .container-i-text {

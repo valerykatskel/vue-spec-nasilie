@@ -2,7 +2,7 @@
   padding: 60px;
   width: 100%;
   box-sizing: border-box;
-
+  
   @media (max-width: 780px) {
     padding: 40px;
   }
@@ -11,7 +11,7 @@
     padding: 20px;
   }
 
-  p,h3 {
+  p, h3 {
     font-family: "robotoregular";
     font-size: 21px;
     line-height: 32px;
@@ -44,4 +44,35 @@
     }
   }
 
+}
+
+#history04 {
+  .container-footer {
+    .container-i-text {
+      position: relative;
+
+      &:before {
+        position: absolute;
+        content: '';
+        width: 60px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.5);
+        left: 60px;
+        bottom: 0;
+      }
+
+      @media (max-width: 780px) {
+        &:before {
+          left: 40px;
+          width: 30px!important;
+        }
+      }
+    
+      @media (max-width: 480px) {
+        &:before {
+          left: 20px;
+        }
+      }
+    }
+  }
 }
