@@ -17,11 +17,11 @@
       />
       
       <read-more-indicator 
-      title="Читать далее"
-      topText="Наверх"
-      :revert="true"
-      :isBottomOfPage="isBottomOfPage"
-      :animatedArrow="false"
+        title="Читать далее"
+        topText="Наверх"
+        :revert="false"
+        :isBottomOfPage="true"
+        :animatedArrow="false"
     />
     </div>
 
@@ -261,6 +261,7 @@ export default {
 
       // создаем новый таймлайн для анимаций (новую анимацию)
       var tl = new TimelineLite()
+        .to(`.readmore`, 0.4, {opacity: 0.0}, '+=0.1')
         .to('#intro .slide-background', 1.5, {opacity: 0.0}) 
  
       // 2. Создаем сцену для главного
@@ -283,7 +284,6 @@ export default {
         // создаем новый таймлайн для анимации для каждого слайда
         // для последнего слайда делаем лишь анимацию появления
         const slideTween = new TimelineLite()
-        const slideHeaderTween = new TimelineLite()
         
         if (element.id === 'outro') {
           slideTween.to(`#${element.id} .slide-background`, 2, {opacity: 0.5})
@@ -300,7 +300,6 @@ export default {
           slideTween
             .to(`#${element.id} .slide-background`, 4, {opacity: 0.0}, 'bgOpacityBlur')
             .to(`#${element.id} .slide-background`, 2.3, {scale: 1.8},'startScale')
-            //.to(`#${element.id} .slide-content-history`, 1, {y: -170}, 'bgOpacityFadeHeader')
             .to(`#${element.id} .slide-background`, 2.3, { css: { '-webkit-filter': 'blur(8.0px)' }},'bgOpacityBlur');
             
           
@@ -317,7 +316,6 @@ export default {
         })
           .setClassToggle(slideSelector, "visited")
           .setTween(slideTween)
-          //.setTween(slideHeaderTween)
           .addIndicators()
           .addTo(this.controller)
       })

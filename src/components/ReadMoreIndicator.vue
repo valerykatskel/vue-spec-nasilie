@@ -109,7 +109,6 @@ export default {
     width: 30px;
     height: 15px;
     bottom: 0;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAOCAMAAAAPOFwLAAAAaVBMVEUAAAD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8G612AAAAInRSTlMABPzyfx8OWTreo0z26uXY0sXEwbmkm4NvNBIBpnhkLyMi+Kud8wAAAJJJREFUGNN1j1kSgyAQREdAFnFLNK5Z+/6HDKSsGCK8j6mu6o95TeIiKYEsBE3M6HirDZuILGciO5aZYKX1Ya5xyv/b/Ixq3mILrsJWcTSvr0MPeMPdCeiWn0cDYPTuBFxDnRvgDDcnYFwpRJXwht4J7B6ZWcEZKu6upQjPBh/qB0VZOjjanBJkBdBLSrKOQzjoDRZkCSBsYkiwAAAAAElFTkSuQmCC');
     background-repeat: no-repeat;
     display: inline-block;
   }
