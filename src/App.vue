@@ -274,7 +274,7 @@ export default {
       })
         .setClassToggle(slideIntoSelector, "visited")
         .setTween(tl)
-        .addIndicators()
+        //.addIndicators()
         .addTo(this.controller)
 
       
@@ -316,7 +316,7 @@ export default {
         })
           .setClassToggle(slideSelector, "visited")
           .setTween(slideTween)
-          .addIndicators()
+          //.addIndicators()
           .addTo(this.controller)
       })
 
