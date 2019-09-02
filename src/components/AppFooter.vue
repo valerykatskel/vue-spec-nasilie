@@ -7,7 +7,7 @@
         </div>
         <div class="footer-social">
           <social-sharing 
-            url="https://tut.by/"
+            url="https://special.tut.by/status/soprotivlenie_bespolezno/"
             title="Сопротивление бесполезно"
             description="Истории людей, которые заявили о насилии со стороны милиции"
             quote="Истории белорусов, которые заявили о насилии со стороны милиции и о которых рассказывает в своем фотопроекте Максим Сарычев, произошли более года назад"
